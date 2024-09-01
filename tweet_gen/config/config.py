@@ -38,4 +38,4 @@ BACKEND_API_DESCRIPTION = "The backend API that exposes the tweet generation fun
 
 # LLM
 MODEL = "gpt-4o"
-OPENAI_API_KEY = ""
+TEMPERATURE = 0.7

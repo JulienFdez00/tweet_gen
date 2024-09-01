@@ -56,7 +56,7 @@ def generate_tweet(instructions: str, context_tweets: str) -> Optional[str]:
     }
     response = requests.post(f"{BACKEND_URL}/tweet_generation", json=data)
     if response.status_code == 200:
-        answer = response.json()
+        answer = response.json().get("answer")
         st.session_state["generated_tweet"] = answer.get("response", "")
         LOGGER.info(f"Generated tweet: {answer.get('response', '')}")
         return answer.get("response", "")
