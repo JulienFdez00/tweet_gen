@@ -46,15 +46,16 @@ async def rag_query(question_body: Question) -> dict:
             {"tweet_request": tweet_request, "context_tweets": context_tweets}
         )
 
-        LOGGER.info(f"response: {response}")
+        LOGGER.info(f"answer: {response}")
 
         # async def generate() -> AsyncGenerator[str, None]:
         #     async for response in get_tweet_generation_chain().ainvoke(
         #         {"tweet_request": tweet_request, "context_tweets": context_tweets}
-        #         ):
-        #         LOGGER.info(f"response: {response}")
+        #     ):
+        #         LOGGER.info(f"answer: {response}")
         #         yield json.dumps({"answer": response})
 
+        # return StreamingResponse(content=generate(), media_type="text/event-stream")
         return {"answer": response}
     except Exception as e:
         LOGGER.error(f"An error occurred: {str(e)}")

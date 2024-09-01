@@ -1,13 +1,12 @@
 """Utils."""
-import json
-from typing import Generator
+from typing import Optional
 
 import requests
 import streamlit as st
 import streamlit.components.v1 as components
 import tiktoken
 
-from config.config import BACKEND_URL
+from config.config import BACKEND_URL, LOGGER
 
 
 def display_header(
@@ -50,31 +49,20 @@ def copy_to_clipboard_button(content: str) -> None:
     components.html(button_html + script_js, height=30)
 
 
-def generate_tweet(instructions: str, context_tweets: str) -> Generator:
-    # Send the question to the backend RAG processing endpoint streaming
+def generate_tweet(instructions: str, context_tweets: str) -> Optional[str]:
     data = {
         "tweet_request": instructions,
         "context_tweets": context_tweets,
     }
-    answer = {"answer": ""}
-    buffer = ""
-    with requests.post(f"{BACKEND_URL}/tweet_generation", json=data, stream=True) as response:
-        for chunk in response.iter_content(chunk_size=1024):
-            buffer += chunk.decode("utf-8")
-            try:
-                formatted_buffer = "[" + buffer.replace("\n", "\\n").replace("}{", "},{") + "]"
-                json_chunk = json.loads(formatted_buffer)
-                buffer = ""  # Reset buffer after successful parsing
-                for element in json_chunk:
-                    for key, value in element.items():
-                        if key == "answer":
-                            yield value
-                            answer[key] += value
-            except json.JSONDecodeError:
-                # Incomplete JSON, continue accumulating chunks
-                continue
-
-    st.session_state["generated_tweet"] = answer
+    response = requests.post(f"{BACKEND_URL}/tweet_generation", json=data)
+    if response.status_code == 200:
+        answer = response.json()
+        st.session_state["generated_tweet"] = answer.get("response", "")
+        LOGGER.info(f"Generated tweet: {answer.get('response', '')}")
+        return answer.get("response", "")
+    st.session_state["generated_tweet"] = ""
+    response.raise_for_status()
+    return None
 
 
 def get_num_tokens_from_string(string: str, encoding_name: str = "cl100k_base") -> int:
@@ -95,7 +83,7 @@ def display_messages() -> None:
 
 def add_tweet_to_chat_history(user_question: str) -> None:
     response_data = st.session_state["generated_tweet"]
-    answer = response_data.get("answer", "No answer found.")
+    answer = response_data
     st.session_state["chat_history"].append(
         {
             "user": user_question,

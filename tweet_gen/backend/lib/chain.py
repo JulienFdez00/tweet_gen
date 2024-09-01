@@ -9,6 +9,5 @@ from backend.lib.utils import get_llm_for_tweet_generation
 
 
 def get_tweet_generation_chain(prompt: ChatPromptTemplate = TWEET_PROMPT_TEMPLATE) -> Runnable:
-    """Returns the RFP summerization chain."""
     llm = get_llm_for_tweet_generation()
     return prompt | llm | {"response": StrOutputParser()}
