@@ -20,7 +20,7 @@ if LOGGER_LEVEL not in ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]:
     LOGGER_LEVEL = "INFO"
 LOGGER = get_logger(logger_level=getattr(logging, LOGGER_LEVEL))
 
-# T weet Selection
+# Tweet Selection
 MINIMUM_FAV_COUNT = 8
 MAX_EXTERIOR_CONTEXT_TOKENS = 8192
 
@@ -37,5 +37,5 @@ BACKEND_API_VERSION = "1.0.0"
 BACKEND_API_DESCRIPTION = "The backend API that exposes the tweet generation functionality."
 
 # LLM
-MODEL = "gpt-4o"
-TEMPERATURE = 0.7
+MODEL = "gpt-4o-2024-08-06"
+TEMPERATURE = 0.6

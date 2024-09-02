@@ -50,7 +50,7 @@ async def rag_query(question_body: Question) -> dict:
         return {"answer": response}
     except Exception as e:
         LOGGER.error(f"An error occurred: {str(e)}")
-        raise HTTPException(status_code=500, detail="An error occurred while processing the RAG query.")
+        raise HTTPException(status_code=500, detail="An error occurred while processing the query.")
 
 
 if __name__ == "__main__":

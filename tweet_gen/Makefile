@@ -11,11 +11,6 @@ endif
 help:
 	@grep "^# help\:" Makefile | grep -v grep | sed 's/\# help\: //' | sed 's/\# help\://'
 
-# help: install					- Create a virtual environment and install dependencies
-.PHONY: install
-install:
-	@bash bin/$(INSTALL_SCRIPT)
-
 # help: install_precommit			- Install pre-commit hooks
 .PHONY: install_precommit
 install_precommit:
@@ -36,14 +31,3 @@ run_backend:
 .PHONY: run_frontend
 run_frontend:
 	@PYTHONPATH=. streamlit run frontend/app.py
-
-# help: serve_docs_locally			- Serve docs locally on port 8001
-.PHONY: serve_docs_locally
-serve_docs_locally:
-	@mkdocs serve --livereload -a localhost:8001
-
-# help: deploy_docs				- Deploy documentation to GitHub Pages
-.PHONY: deploy_docs
-deploy_docs:
-	@mkdocs build
-	@mkdocs gh-deploy

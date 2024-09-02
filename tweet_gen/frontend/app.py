@@ -63,7 +63,7 @@ def main() -> None:
         if st.session_state["context_tweets"]:
             if "chat_history" not in st.session_state:
                 st.session_state["chat_history"] = []
-            tweet_request = st.chat_input("What topic should your generated tweet be about:", key="question")
+            tweet_request = st.chat_input("What should your generated tweet be about:", key="question")
             if tweet_request:
                 context_tweets = st.session_state["context_tweets"]
                 display_messages()
