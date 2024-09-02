@@ -19,18 +19,18 @@ def main() -> None:
     LOGGER.info("Starting the frontend application.")
     set_page_config()
     display_header()
-    # Ask the user to upload a JSON file
-    uploaded_file = st.file_uploader("Choose a JSON file containing tweets", type="json")
+    # Ask the user to upload a tweets.js file
+    uploaded_file = st.file_uploader("Upload your tweets.js file from the tweet archive", type="js")
     if uploaded_file is not None:
         # To read file as string:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         string_data = stringio.read()
 
-        # Process the JSON content to extract tweets
         if "context_tweets" not in st.session_state:
             try:
-                tweets_data = json.loads(string_data)
-                # Filter tweets based on the given conditions
+                tweets_data = json.loads(string_data.split("= ")[1])  # tweets.js format
+
+                # Filter tweets
                 filtered_tweets = [
                     (tweet["tweet"]["full_text"], int(tweet["tweet"]["favorite_count"]))
                     for tweet in tweets_data
@@ -44,7 +44,6 @@ def main() -> None:
 
                 # Sort tweets by favorite count in descending order
                 filtered_tweets.sort(key=lambda x: x[1], reverse=True)
-                # Extract only the full_text from the sorted list
                 sorted_tweets = [tweet[0] for tweet in filtered_tweets]
 
             except json.JSONDecodeError as e:
@@ -71,7 +70,6 @@ def main() -> None:
                 st.chat_message("user").write(tweet_request)
                 with st.spinner("Generating tweet..."):
                     st.chat_message("assistant").write(generate_tweet(tweet_request, context_tweets))
-                    # Display the chat history using chat_message for a chat-like interface
                     st.divider()
                 if st.session_state["generated_tweet"]:
                     add_tweet_to_chat_history(tweet_request)
