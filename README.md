@@ -46,4 +46,8 @@ Be detailed in your tweet requests, generated tweets can be somewhat formulaic i
 
 ## Necessary Improvements
 
-Impersonation still isn't perfect, the model is very sensitive to the prompt so feel free to play around with it.
+Impersonation still isn't perfect, the model is very sensitive to the prompt so feel free to play around with it. 
+
+## Notes
+
+I feel like giving permissive content sensitivity guidelines makes tweets in general less formulaic, even ones that aren't particularly vulgar or offensive. Obviously please refrain from posting insensitive or vulgar stuff online yadda yadda yadda.
