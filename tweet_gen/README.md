@@ -6,7 +6,7 @@ Use your tweet archive to generate new, original tweets.
 
 ### Step 0
 
-Downlaod an archive of your tweets. You will use the "tweets.js" file located in the "data" folder of your archive.
+Download an archive of your tweets. You will use the "tweets.js" file located in the "data" folder of your archive.
 
 ### Step 1
 
