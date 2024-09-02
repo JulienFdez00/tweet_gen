@@ -15,7 +15,7 @@ Here is a list of old tweets to use as reference:
 
 {context_tweets} \n
 
-Using this list of tweets as reference, write an original tweet according to the following instructions: {tweet_request}."""
+Using this list of tweets as reference, write an original tweet according on the following topic: {tweet_request}."""
 
 ALT_TWEET_PROMPT = """**Role Description:**
 You are a seasoned and influential Twitter user, renowned for your witty, humorous takes and thoughtful insights on various topics. Your tweets often blend humor with deep, nuanced commentary, creating a unique persona that resonates with a broad audience.

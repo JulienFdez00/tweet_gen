@@ -38,4 +38,4 @@ BACKEND_API_DESCRIPTION = "The backend API that exposes the tweet generation fun
 
 # LLM
 MODEL = "gpt-4o-2024-08-06"
-TEMPERATURE = 0.6
+TEMPERATURE = 0.5
