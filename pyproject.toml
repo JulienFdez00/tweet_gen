@@ -7,7 +7,7 @@ name = "tweet_gen"
 authors = [
   { name = "JulienFdez00", email = "j.fernandez17@ejm.org" },
 ]
-description = "Gen AI tender books helper"
+description = "Use your tweet archive to generate new, original tweets"
 version = "0.0.1"
 readme = "README.md"
 requires-python = ">=3.10"
