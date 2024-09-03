@@ -9,11 +9,11 @@ from config.config import PATH_LOGO
 def display_header(
     title: str = "Tweet Generator",
     sub_title: str = "Use your archive to generate new tweets",
-    title_color: str = "#000000",
+    title_color: str = " #47474a",
 ) -> None:  # noqa: E501
     st.divider()
     st.markdown(f"<h1 style='text-align: center; color: {title_color};'>{title}</h1>", unsafe_allow_html=True)
-    st.write(f"<h3 style='text-align: center'>{sub_title}</h3>", unsafe_allow_html=True)
+    st.write(f"<h3 style='text-align: center; color: {title_color};'>{sub_title}</h3>", unsafe_allow_html=True)
     st.divider()
 
 
