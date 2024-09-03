@@ -12,24 +12,24 @@ Download an archive of your tweets. You will use the "tweets.js" file located in
 
 Create a virtual environment with Python 3.10 and install the required libraries by running
 
- ```bash
-    pip install -r requirements.txt
- ```
+```bash
+pip install -r requirements.txt
+```
 
 ### Step 2
 
 Create an .env file and add your OpenAI API key (OPENAI_API_KEY="sk-xxx"). You can also do so by running the following command in your terminal:
 
- ```bash
-    export OPENAI_API_KEY="sk-xxx"
- ```
+```bash
+export OPENAI_API_KEY="sk-xxx"
+```
 
 ### Step 3
 
 To start the backend server locally:
 
 ```bash
-   make run_backend
+make run_backend
 ```
 
 ### Step 4
@@ -37,7 +37,7 @@ To start the backend server locally:
 Run the app locally:
 
 ```bash
-   make run_frontend
+make run_frontend
 ```
 
 ## User Guidelines
