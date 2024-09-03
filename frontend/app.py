@@ -5,19 +5,23 @@ from io import StringIO
 import streamlit as st
 
 from config.config import LOGGER, MAX_EXTERIOR_CONTEXT_TOKENS, MINIMUM_FAV_COUNT
-from frontend.lib.utils import (
-    add_tweet_to_chat_history,
+from frontend.lib.display import (
     display_header,
     display_messages,
+    set_page_config,
+    set_sidebar_theme,
+)
+from frontend.lib.utils import (
+    add_tweet_to_chat_history,
     generate_tweet,
     get_num_tokens_from_string,
-    set_page_config,
 )
 
 
 def main() -> None:
     LOGGER.info("Starting the frontend application.")
     set_page_config()
+    set_sidebar_theme()
     display_header()
     # Ask the user to upload a tweets.js file
     uploaded_file = st.file_uploader("Upload your tweets.js file from the tweet archive", type="js")
