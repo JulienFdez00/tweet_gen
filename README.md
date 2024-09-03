@@ -28,17 +28,17 @@ Create an .env file and add your OpenAI API key (OPENAI_API_KEY="sk-xxx"). You c
 
 To start the backend server locally:
 
-    ```bash
-    make run_backend
-    ```
+```bash
+make run_backend
+```
 
 ### Step 4
 
 Run the app locally:
 
-    ```bash
-    make run_frontend
-    ```
+```bash
+make run_frontend
+```
 
 ## User Guidelines
 
